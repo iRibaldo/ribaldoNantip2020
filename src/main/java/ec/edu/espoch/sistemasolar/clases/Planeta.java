@@ -12,6 +12,8 @@ import ec.edu.espoch.sistemasolar.enumeracion.TipoPlaneta;
  */
 public class Planeta {
 
+    //Atributos
+    public boolean exterior = false;
     public String nombre;
     public int cantidadSatelite;
     public double masaKilimetro;
@@ -19,8 +21,25 @@ public class Planeta {
     public double diametroKilometro;
     public int distanciaSol;
     public TipoPlaneta tipoPlaneta;
+    
 
+    //constructor no vacio
+
+    public Planeta(String nombre, int cantidadSatelite, double masaKilimetro, double volumen, double diametroKilometro, int distanciaSol, TipoPlaneta tipoPlaneta) {
+        this.nombre = nombre;
+        this.cantidadSatelite = cantidadSatelite;
+        this.masaKilimetro = masaKilimetro;
+        this.volumen = volumen;
+        this.diametroKilometro = diametroKilometro;
+        this.distanciaSol = distanciaSol;
+        this.tipoPlaneta = tipoPlaneta;
+        this.exterior();
+    }
+    
+    
+ 
     public void imprimir() {
+
         System.out.println("El nombre del planeta es " + nombre);
         System.out.println("La cantidad de satelites es de " + cantidadSatelite);
         System.out.println("la masa en kilometros es de " + masaKilimetro);
@@ -32,7 +51,21 @@ public class Planeta {
     }
 
     public double calcularDensidadPlaneta() {
-        return masaKilimetro/volumen;
+        return masaKilimetro / volumen;
+    }
+
+    public boolean exterior() {
+
+        double maximo = 3.4;
+        double distancia = 14597879;
+        double limite = maximo * distancia;
+
+        if (distanciaSol > limite) {
+            exterior = true;
+
+        }
+
+        return exterior;
     }
 
 }
